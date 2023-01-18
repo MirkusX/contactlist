@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { createRef, useReducer, useRef, useState } from "react";
 import {
   StyledDiv,
   StyledForm,
@@ -11,7 +11,7 @@ import biznizcard from "../image/biznizcard.webp";
 export const Frontpage = () => {
   const [info, setInfo] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  const form = useRef();
   const submitInfo = (e) => {
     e.preventDefault();
     setInfo([
@@ -22,8 +22,10 @@ export const Frontpage = () => {
         url: state.url,
       },
     ]);
+    form.current.reset();
+    console.log(info);
   };
-  console.log(info);
+
   return (
     <>
       <header>
@@ -38,7 +40,7 @@ export const Frontpage = () => {
             <h2>email</h2>
           </div>
         </StyledDiv>
-        <StyledForm onSubmit={submitInfo}>
+        <StyledForm ref={form} onSubmit={submitInfo}>
           <input
             type="text"
             onInput={(e) => dispatch({ type: "name", payload: e.target.value })}
