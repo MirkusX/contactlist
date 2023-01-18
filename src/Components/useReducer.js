@@ -9,7 +9,7 @@ export const initialState = [
     number: "",
   },
   {
-    image: "",
+    url: "",
   },
 ];
 
@@ -21,7 +21,7 @@ export const reducer = (state, action) => {
       return { email: (state.email = action.payload) };
     case "number":
       return { number: (state.number = action.payload) };
-    case "image":
-      return { image: (state.image = action.payload) };
+    case "url":
+      return { url: (state.url = action.payload) };
   }
 };
