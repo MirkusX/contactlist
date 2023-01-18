@@ -11,6 +11,19 @@ import biznizcard from "../image/biznizcard.webp";
 export const Frontpage = () => {
   const [info, setInfo] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const submitInfo = (e) => {
+    e.preventDefault();
+    setInfo([
+      {
+        name: state.name,
+        email: state.email,
+        number: state.number,
+        url: state.url,
+      },
+    ]);
+  };
+  console.log(info);
   return (
     <>
       <header>
@@ -25,31 +38,32 @@ export const Frontpage = () => {
             <h2>email</h2>
           </div>
         </StyledDiv>
-        <StyledForm>
+        <StyledForm onSubmit={submitInfo}>
           <input
             type="text"
             onInput={(e) => dispatch({ type: "name", payload: e.target.value })}
           />
           <input
-            type="email"
+            type="text"
             onInput={(e) =>
               dispatch({ type: "email", payload: e.target.value })
             }
           />
           <input
-            type="number"
+            type="text"
             onInput={(e) =>
               dispatch({ type: "number", payload: e.target.value })
             }
           />
           <input
-            type="url"
+            type="text"
             onInput={(e) => dispatch({ type: "url", payload: e.target.value })}
           />
           <input
             type="file"
             onInput={(e) => dispatch({ type: "url", payload: e.target.value })}
           />
+          <input type="submit" hidden />
         </StyledForm>
       </StyledSection>
     </>

@@ -7,6 +7,7 @@ export const StyledForm = styled.form`
 
 export const StyledSection = styled.section`
   display: flex;
+  justify-content: center;
 `;
 
 export const StyledDiv = styled.div`
@@ -14,6 +15,7 @@ export const StyledDiv = styled.div`
   width: 50%;
 `;
 
-export const StyledImage = styled.image`
-  width: 50%;
+export const StyledImage = styled.img`
+  width: 30%;
+  object-fit: cover;
 `;
