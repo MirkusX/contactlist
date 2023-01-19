@@ -1,5 +1,6 @@
 import { createRef, useReducer, useRef, useState } from "react";
 import {
+  ContactContainer,
   StyledDiv,
   StyledForm,
   StyledImage,
@@ -15,6 +16,7 @@ export const Frontpage = () => {
   const submitInfo = (e) => {
     e.preventDefault();
     setInfo([
+      ...info,
       {
         name: state.name,
         email: state.email,
@@ -32,14 +34,20 @@ export const Frontpage = () => {
         <h1>contact page</h1>
       </header>
       <StyledSection>
-        <StyledDiv>
-          <StyledImage src={biznizcard} />
-          <div>
-            <h2>name</h2>
-            <h2>number</h2>
-            <h2>email</h2>
-          </div>
-        </StyledDiv>
+        <ContactContainer>
+          {info.map((item, index) => {
+            return (
+              <StyledDiv>
+                <StyledImage src={item.url} />
+                <StyledDiv inner>
+                  <h2>{item.name}</h2>
+                  <h2>{item.number}</h2>
+                  <h2>{item.email}</h2>
+                </StyledDiv>
+              </StyledDiv>
+            );
+          })}
+        </ContactContainer>
         <StyledForm ref={form} onSubmit={submitInfo}>
           <input
             type="text"
