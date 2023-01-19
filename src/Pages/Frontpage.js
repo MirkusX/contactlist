@@ -4,6 +4,7 @@ import {
   StyledDiv,
   StyledForm,
   StyledImage,
+  StyledInput,
   StyledSection,
 } from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
@@ -12,6 +13,7 @@ import biznizcard from "../image/biznizcard.webp";
 export const Frontpage = () => {
   const [info, setInfo] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
+  console.log(state.url);
   const form = useRef();
   const submitInfo = (e) => {
     e.preventDefault();
@@ -49,29 +51,34 @@ export const Frontpage = () => {
           })}
         </ContactContainer>
         <StyledForm ref={form} onSubmit={submitInfo}>
-          <input
+          <h2>Create Contact</h2>
+          <label>Name</label>
+          <StyledInput
             type="text"
             onInput={(e) => dispatch({ type: "name", payload: e.target.value })}
+            placeholder="Enter name..."
           />
-          <input
+          <label>E-Mail</label>
+          <StyledInput
             type="text"
             onInput={(e) =>
               dispatch({ type: "email", payload: e.target.value })
             }
+            placeholder="Enter email..."
           />
-          <input
+          <label>Phone Number</label>
+          <StyledInput
             type="text"
             onInput={(e) =>
               dispatch({ type: "number", payload: e.target.value })
             }
+            placeholder="Enter number..."
           />
-          <input
+          <label>Image URL</label>
+          <StyledInput
             type="text"
             onInput={(e) => dispatch({ type: "url", payload: e.target.value })}
-          />
-          <input
-            type="file"
-            onInput={(e) => dispatch({ type: "url", payload: e.target.value })}
+            placeholder="Image url..."
           />
           <input type="submit" hidden />
         </StyledForm>
