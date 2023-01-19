@@ -11,6 +11,9 @@ export const initialState = [
   {
     url: "",
   },
+  {
+    category: "",
+  },
 ];
 
 export const reducer = (state, action) => {
@@ -23,5 +26,7 @@ export const reducer = (state, action) => {
       return { ...state, number: (state.number = action.payload) };
     case "url":
       return { ...state, url: (state.url = action.payload) };
+    case "category":
+      return { ...state, category: (state.category = action.payload) };
   }
 };

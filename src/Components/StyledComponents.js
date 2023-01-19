@@ -54,6 +54,12 @@ export const StyledDiv = styled.div`
     text-align: left;
     display: block;`;
   }}
+  ${(props) => {
+    if (props.category)
+      return `
+    background: inherit;
+    flex-direction: column;`;
+  }}
 `;
 
 export const StyledImage = styled.img`

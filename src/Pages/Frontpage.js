@@ -28,24 +28,28 @@ export const Frontpage = () => {
         email: state.email,
         number: state.number,
         url: state.url,
+        category: state.category,
       },
     ]);
+
     form.current.reset();
-    console.log(info);
   };
 
   return (
     <>
-      <header>
-        <h1>contact page</h1>
-      </header>
       <StyledSection>
+        <StyledDiv category>
+          <StyledButton>Work</StyledButton>
+          <StyledButton>Friends</StyledButton>
+          <StyledButton>Family</StyledButton>
+        </StyledDiv>
         <ContactContainer>
           {info.map((item, index) => {
             return (
               <StyledDiv key={index}>
                 <StyledImage src={item.url} />
                 <StyledDiv inner>
+                  <h1>{item.category}</h1>
                   <h2>{item.name}</h2>
                   <h2>{item.number}</h2>
                   <h2>{item.email}</h2>
@@ -93,6 +97,20 @@ export const Frontpage = () => {
               }
               placeholder="Image url..."
             />
+            <select
+              type="text"
+              placeholder="Category"
+              onInput={(e) =>
+                dispatch({ type: "category", payload: e.target.value })
+              }
+            >
+              <option value="" selected disabled>
+                Choose category
+              </option>
+              <option value="work">Work</option>
+              <option value="friends">Friends</option>
+              <option value="family">Family</option>
+            </select>
             <input type="submit" hidden />
           </StyledForm>
         </PopOutDiv>
