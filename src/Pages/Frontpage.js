@@ -42,7 +42,7 @@ export const Frontpage = () => {
         <ContactContainer>
           {info.map((item, index) => {
             return (
-              <StyledDiv>
+              <StyledDiv key={index}>
                 <StyledImage src={item.url} />
                 <StyledDiv inner>
                   <h2>{item.name}</h2>
@@ -53,11 +53,11 @@ export const Frontpage = () => {
             );
           })}
         </ContactContainer>
-        <PopOutDiv>
+        <PopOutDiv display={show}>
           <div>
             <button onClick={() => showCreate()}>Create Contact</button>
           </div>
-          <StyledForm display={show} ref={form} onSubmit={submitInfo}>
+          <StyledForm ref={form} onSubmit={submitInfo}>
             <label>Name</label>
             <StyledInput
               type="text"

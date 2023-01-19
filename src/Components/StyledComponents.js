@@ -8,16 +8,14 @@ export const StyledForm = styled.form`
   width: 100%;
   gap: 1em;
   padding: 1em 0;
-  ${(props) => {
-    if (props.display)
-      return `
-    display: none;`;
-  }}
 `;
 
 export const PopOutDiv = styled.div`
   width: 40%;
   text-align: right;
+  display: flex;
+  transition: all 0.5s ease-in-out;
+  transform: translate(${(props) => (props.display ? "0%" : "87%")});
 `;
 
 export const StyledInput = styled.input`
@@ -29,6 +27,7 @@ export const StyledSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  overflow-x: hidden;
 `;
 
 export const ContactContainer = styled.div`
@@ -36,6 +35,7 @@ export const ContactContainer = styled.div`
   flex-direction: column;
   width: 40%;
   gap: 1em;
+  margin-left: 5em;
   background-color: lightblue;
 `;
 
