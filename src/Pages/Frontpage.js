@@ -1,6 +1,7 @@
-import { createRef, useReducer, useRef, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import {
   ContactContainer,
+  PopOutDiv,
   StyledDiv,
   StyledForm,
   StyledImage,
@@ -8,13 +9,15 @@ import {
   StyledSection,
 } from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
-import biznizcard from "../image/biznizcard.webp";
 
 export const Frontpage = () => {
+  const [show, setShow] = useState(true);
   const [info, setInfo] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state.url);
   const form = useRef();
+  const showCreate = () => {
+    setShow(!show);
+  };
   const submitInfo = (e) => {
     e.preventDefault();
     setInfo([
@@ -50,38 +53,46 @@ export const Frontpage = () => {
             );
           })}
         </ContactContainer>
-        <StyledForm ref={form} onSubmit={submitInfo}>
-          <h2>Create Contact</h2>
-          <label>Name</label>
-          <StyledInput
-            type="text"
-            onInput={(e) => dispatch({ type: "name", payload: e.target.value })}
-            placeholder="Enter name..."
-          />
-          <label>E-Mail</label>
-          <StyledInput
-            type="text"
-            onInput={(e) =>
-              dispatch({ type: "email", payload: e.target.value })
-            }
-            placeholder="Enter email..."
-          />
-          <label>Phone Number</label>
-          <StyledInput
-            type="text"
-            onInput={(e) =>
-              dispatch({ type: "number", payload: e.target.value })
-            }
-            placeholder="Enter number..."
-          />
-          <label>Image URL</label>
-          <StyledInput
-            type="text"
-            onInput={(e) => dispatch({ type: "url", payload: e.target.value })}
-            placeholder="Image url..."
-          />
-          <input type="submit" hidden />
-        </StyledForm>
+        <PopOutDiv>
+          <div>
+            <button onClick={() => showCreate()}>Create Contact</button>
+          </div>
+          <StyledForm display={show} ref={form} onSubmit={submitInfo}>
+            <label>Name</label>
+            <StyledInput
+              type="text"
+              onInput={(e) =>
+                dispatch({ type: "name", payload: e.target.value })
+              }
+              placeholder="Enter name..."
+            />
+            <label>E-Mail</label>
+            <StyledInput
+              type="text"
+              onInput={(e) =>
+                dispatch({ type: "email", payload: e.target.value })
+              }
+              placeholder="Enter email..."
+            />
+            <label>Phone Number</label>
+            <StyledInput
+              type="text"
+              onInput={(e) =>
+                dispatch({ type: "number", payload: e.target.value })
+              }
+              placeholder="Enter number..."
+            />
+            <label>Image URL</label>
+            <StyledInput
+              type="text"
+              onInput={(e) =>
+                dispatch({ type: "url", payload: e.target.value })
+              }
+              placeholder="Image url..."
+            />
+            <input type="submit" hidden />
+          </StyledForm>
+        </PopOutDiv>
       </StyledSection>
     </>
   );

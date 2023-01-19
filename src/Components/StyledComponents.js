@@ -5,9 +5,19 @@ export const StyledForm = styled.form`
   flex-direction: column;
   background-color: blue;
   align-items: center;
-  width: 40%;
+  width: 100%;
   gap: 1em;
-  padding: 1em;
+  padding: 1em 0;
+  ${(props) => {
+    if (props.display)
+      return `
+    display: none;`;
+  }}
+`;
+
+export const PopOutDiv = styled.div`
+  width: 40%;
+  text-align: right;
 `;
 
 export const StyledInput = styled.input`
@@ -17,7 +27,7 @@ export const StyledInput = styled.input`
 
 export const StyledSection = styled.section`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
 `;
 
