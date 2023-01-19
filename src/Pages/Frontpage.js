@@ -2,6 +2,7 @@ import { useReducer, useRef, useState } from "react";
 import {
   ContactContainer,
   PopOutDiv,
+  StyledButton,
   StyledDiv,
   StyledForm,
   StyledImage,
@@ -53,11 +54,13 @@ export const Frontpage = () => {
             );
           })}
         </ContactContainer>
-        <PopOutDiv display={show}>
+        <PopOutDiv>
           <div>
-            <button onClick={() => showCreate()}>Create Contact</button>
+            <StyledButton onClick={() => showCreate()}>
+              Create Contact
+            </StyledButton>
           </div>
-          <StyledForm ref={form} onSubmit={submitInfo}>
+          <StyledForm display={show} ref={form} onSubmit={submitInfo}>
             <label>Name</label>
             <StyledInput
               type="text"

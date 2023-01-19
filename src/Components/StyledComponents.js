@@ -8,14 +8,19 @@ export const StyledForm = styled.form`
   width: 100%;
   gap: 1em;
   padding: 1em 0;
+  transition: all 0.5s ease-in-out;
+  transform: translate(${(props) => (props.display ? "0%" : "100%")});
 `;
 
 export const PopOutDiv = styled.div`
   width: 40%;
   text-align: right;
-  display: flex;
-  transition: all 0.5s ease-in-out;
-  transform: translate(${(props) => (props.display ? "0%" : "87%")});
+`;
+
+export const StyledButton = styled.button`
+  background: blue;
+  border: none;
+  padding: 1em;
 `;
 
 export const StyledInput = styled.input`
