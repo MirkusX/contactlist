@@ -15,6 +15,8 @@ export const StyledForm = styled.form`
 export const PopOutDiv = styled.div`
   width: 40%;
   text-align: right;
+  position: fixed;
+  right: 0;
 `;
 
 export const StyledButton = styled.button`
@@ -30,7 +32,7 @@ export const StyledInput = styled.input`
 
 export const StyledSection = styled.section`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   overflow-x: hidden;
 `;

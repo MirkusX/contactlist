@@ -105,7 +105,7 @@ export const Frontpage = () => {
               }
             >
               <option value="" selected disabled>
-                Choose category
+                Choose category...
               </option>
               <option value="work">Work</option>
               <option value="friends">Friends</option>
