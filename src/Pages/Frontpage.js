@@ -10,12 +10,12 @@ import {
   StyledSection,
 } from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
-
+const test = [];
 export const Frontpage = () => {
   const [show, setShow] = useState(true);
   const [info, setInfo] = useState([]);
   const [category, setCategory] = useState([]);
-  const [test, setTest] = useState("all");
+
   const [state, dispatch] = useReducer(reducer, initialState);
   const form = useRef();
   const showCreate = () => {
@@ -39,13 +39,15 @@ export const Frontpage = () => {
   const filter = (props) => {
     if (props === "all") {
       setCategory(info);
-      console.log("aa");
     } else {
       setCategory(info.filter((item) => item.category === props));
     }
   };
+  useEffect(() => {
+    setCategory(info);
+    console.log(category);
+  }, [info]);
 
-  // setInfo(info.filter((item) => item.category === category));
   return (
     <>
       <StyledSection>
