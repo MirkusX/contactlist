@@ -38,11 +38,10 @@ export const StyledSection = styled.section`
 `;
 
 export const ContactContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 40%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 70%;
   gap: 1em;
-  margin-left: 5em;
   background-color: lightblue;
 `;
 

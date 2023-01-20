@@ -1,4 +1,4 @@
-import { useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import {
   ContactContainer,
   PopOutDiv,
@@ -8,13 +8,14 @@ import {
   StyledImage,
   StyledInput,
   StyledSection,
-  TestDiv,
 } from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
 
 export const Frontpage = () => {
   const [show, setShow] = useState(true);
   const [info, setInfo] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [test, setTest] = useState("all");
   const [state, dispatch] = useReducer(reducer, initialState);
   const form = useRef();
   const showCreate = () => {
@@ -35,17 +36,35 @@ export const Frontpage = () => {
 
     form.current.reset();
   };
+  const filter = (props) => {
+    if (props === "all") {
+      setCategory(info);
+      console.log("aa");
+    } else {
+      setCategory(info.filter((item) => item.category === props));
+    }
+  };
 
+  // setInfo(info.filter((item) => item.category === category));
   return (
     <>
       <StyledSection>
         <StyledDiv category>
-          <StyledButton>Work</StyledButton>
-          <StyledButton>Friends</StyledButton>
-          <StyledButton>Family</StyledButton>
+          <StyledButton onClick={() => filter("all")} value="all">
+            All
+          </StyledButton>
+          <StyledButton onClick={() => filter("work")} value="work">
+            Work
+          </StyledButton>
+          <StyledButton onClick={() => filter("friends")} value="friends">
+            Friends
+          </StyledButton>
+          <StyledButton onClick={() => filter("family")} value="family">
+            Family
+          </StyledButton>
         </StyledDiv>
         <ContactContainer>
-          {info.map((item, index) => {
+          {category.map((item, index) => {
             return (
               <StyledDiv key={index}>
                 <StyledImage src={item.url} />
