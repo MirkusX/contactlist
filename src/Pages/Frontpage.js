@@ -10,12 +10,10 @@ import {
   StyledSection,
 } from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
-const test = [];
 export const Frontpage = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [info, setInfo] = useState([]);
   const [category, setCategory] = useState([]);
-
   const [state, dispatch] = useReducer(reducer, initialState);
   const form = useRef();
   const showCreate = () => {
@@ -94,6 +92,7 @@ export const Frontpage = () => {
                 dispatch({ type: "name", payload: e.target.value })
               }
               placeholder="Enter name..."
+              required
             />
             <label>E-Mail</label>
             <StyledInput
@@ -102,6 +101,7 @@ export const Frontpage = () => {
                 dispatch({ type: "email", payload: e.target.value })
               }
               placeholder="Enter email..."
+              required
             />
             <label>Phone Number</label>
             <StyledInput
