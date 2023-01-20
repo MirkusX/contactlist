@@ -118,6 +118,7 @@ export const Frontpage = () => {
                 dispatch({ type: "url", payload: e.target.value })
               }
               placeholder="Image url..."
+              required
             />
             <select
               type="text"
