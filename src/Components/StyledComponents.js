@@ -32,7 +32,7 @@ export const StyledInput = styled.input`
 
 export const StyledSection = styled.section`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   overflow-x: hidden;
 `;
@@ -60,7 +60,10 @@ export const StyledDiv = styled.div`
     if (props.category)
       return `
     background: inherit;
-    flex-direction: column;`;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    `;
   }}
 `;
 

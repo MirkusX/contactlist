@@ -8,6 +8,7 @@ import {
   StyledImage,
   StyledInput,
   StyledSection,
+  TestDiv,
 } from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
 
