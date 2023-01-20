@@ -1,3 +1,4 @@
+import { waitForElementToBeRemoved } from "@testing-library/react";
 import { useEffect, useReducer, useRef, useState } from "react";
 import {
   ContactContainer,
@@ -41,6 +42,13 @@ export const Frontpage = () => {
       setCategory(info.filter((item) => item.category === props));
     }
   };
+
+  const remove = (index) => {
+    const removeList = [...category];
+    removeList.splice(index, 1);
+    setCategory(removeList);
+  };
+
   useEffect(() => {
     setCategory(info);
     console.log(category);
@@ -73,6 +81,7 @@ export const Frontpage = () => {
                   <h2>{item.name}</h2>
                   <h2>{item.number}</h2>
                   <h2>{item.email}</h2>
+                  <button onClick={() => remove(index)}>Remove</button>
                 </StyledDiv>
               </StyledDiv>
             );

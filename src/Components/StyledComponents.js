@@ -40,6 +40,7 @@ export const StyledSection = styled.section`
 export const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
+  grid-auto-columns: 15%;
   width: 70%;
   gap: 1em;
   background-color: lightblue;
