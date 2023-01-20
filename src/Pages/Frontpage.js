@@ -1,4 +1,3 @@
-import { waitForElementToBeRemoved } from "@testing-library/react";
 import { useEffect, useReducer, useRef, useState } from "react";
 import {
   ContactContainer,
@@ -32,8 +31,6 @@ export const Frontpage = () => {
         category: state.category,
       },
     ]);
-
-    form.current.reset();
   };
   const filter = (props) => {
     if (props === "all") {
@@ -47,11 +44,11 @@ export const Frontpage = () => {
     const removeList = [...category];
     removeList.splice(index, 1);
     setCategory(removeList);
+    setInfo(category);
   };
 
   useEffect(() => {
     setCategory(info);
-    console.log(category);
   }, [info]);
 
   return (
