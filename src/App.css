@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded&display=swap");
+
 .App {
   text-align: center;
   background-color: #dbfe87;
   min-height: 100vh;
+  font-family: "Unbounded", cursive;
 }
 
 .App-logo {

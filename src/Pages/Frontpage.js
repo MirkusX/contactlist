@@ -1,6 +1,9 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import {
   ContactContainer,
+  MailIcon,
+  PersonIcon,
+  PhoneIcon,
   PopOutDiv,
   StyledButton,
   StyledDiv,
@@ -78,9 +81,15 @@ export const Frontpage = () => {
                 <StyledImage src={item.url} />
                 <StyledDiv inner>
                   <h1>{item.category}</h1>
-                  <h2>{item.name}</h2>
-                  <h2>{item.number}</h2>
-                  <h2>{item.email}</h2>
+                  <h2>
+                    <PersonIcon />|{item.name}
+                  </h2>
+                  <h2>
+                    <PhoneIcon />|{item.number}
+                  </h2>
+                  <h2>
+                    <MailIcon />|{item.email}
+                  </h2>
                   <StyledButton onClick={() => remove(index)}>
                     Remove
                   </StyledButton>
@@ -121,6 +130,7 @@ export const Frontpage = () => {
                 dispatch({ type: "number", payload: e.target.value })
               }
               placeholder="Enter number..."
+              required
             />
             <label>Image URL</label>
             <StyledInput
@@ -137,6 +147,7 @@ export const Frontpage = () => {
               onInput={(e) =>
                 dispatch({ type: "category", payload: e.target.value })
               }
+              required
             >
               <label>Category</label>
               <option value="" disabled>

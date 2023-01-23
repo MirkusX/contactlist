@@ -1,4 +1,21 @@
 import styled from "styled-components";
+import {
+  BsFillPersonFill,
+  BsFillTelephoneFill,
+  BsMailbox,
+} from "react-icons/bs";
+
+export const PersonIcon = styled(BsFillPersonFill)`
+  vertical-align: middle;
+`;
+
+export const PhoneIcon = styled(BsFillTelephoneFill)`
+  vertical-align: middle;
+`;
+
+export const MailIcon = styled(BsMailbox)`
+  vertical-align: middle;
+`;
 
 export const StyledForm = styled.form`
   display: flex;
@@ -24,6 +41,7 @@ export const StyledButton = styled.button`
   border: none;
   padding: 1em;
   cursor: pointer;
+  font-family: "Unbounded", cursive;
   &:active {
     background-color: #1c448e;
   }
@@ -32,6 +50,7 @@ export const StyledButton = styled.button`
 export const StyledInput = styled.input`
   width: 80%;
   padding: 1em;
+  font-family: "Unbounded", cursive;
 `;
 
 export const StyledSection = styled.section`
