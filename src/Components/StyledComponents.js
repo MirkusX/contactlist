@@ -13,7 +13,7 @@ export const StyledForm = styled.form`
 `;
 
 export const PopOutDiv = styled.div`
-  width: 40%;
+  width: 15%;
   text-align: right;
   position: fixed;
   right: 0;
@@ -23,10 +23,16 @@ export const StyledButton = styled.button`
   background: blue;
   border: none;
   padding: 1em;
+  cursor: pointer;
+  ${(props) => {
+    if (props.remove)
+      return `
+    background: lightblue;`;
+  }}
 `;
 
 export const StyledInput = styled.input`
-  width: 90%;
+  width: 80%;
   padding: 1em;
 `;
 

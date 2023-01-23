@@ -11,8 +11,9 @@ import {
 } from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
 export const Frontpage = () => {
+  const storedList = JSON.parse(localStorage.getItem("c0nt4ct5")) || [];
   const [show, setShow] = useState(false);
-  const [info, setInfo] = useState([]);
+  const [info, setInfo] = useState(storedList);
   const [category, setCategory] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
   const form = useRef();
@@ -31,6 +32,7 @@ export const Frontpage = () => {
         category: state.category,
       },
     ]);
+    form.current.reset();
   };
   const filter = (props) => {
     if (props === "all") {
@@ -44,11 +46,12 @@ export const Frontpage = () => {
     const removeList = [...category];
     removeList.splice(index, 1);
     setCategory(removeList);
-    setInfo(category);
+    setInfo(removeList);
   };
 
   useEffect(() => {
     setCategory(info);
+    localStorage.setItem("c0nt4ct5", JSON.stringify(info));
   }, [info]);
 
   return (
@@ -58,13 +61,13 @@ export const Frontpage = () => {
           <StyledButton onClick={() => filter("all")} value="all">
             All
           </StyledButton>
-          <StyledButton onClick={() => filter("work")} value="work">
+          <StyledButton onClick={() => filter("Work")} value="work">
             Work
           </StyledButton>
-          <StyledButton onClick={() => filter("friends")} value="friends">
+          <StyledButton onClick={() => filter("Friends")} value="friends">
             Friends
           </StyledButton>
-          <StyledButton onClick={() => filter("family")} value="family">
+          <StyledButton onClick={() => filter("Family")} value="family">
             Family
           </StyledButton>
         </StyledDiv>
@@ -78,7 +81,9 @@ export const Frontpage = () => {
                   <h2>{item.name}</h2>
                   <h2>{item.number}</h2>
                   <h2>{item.email}</h2>
-                  <button onClick={() => remove(index)}>Remove</button>
+                  <StyledButton remove onClick={() => remove(index)}>
+                    Remove
+                  </StyledButton>
                 </StyledDiv>
               </StyledDiv>
             );
@@ -133,12 +138,13 @@ export const Frontpage = () => {
                 dispatch({ type: "category", payload: e.target.value })
               }
             >
-              <option value="" selected disabled>
+              <label>Category</label>
+              <option value="" disabled>
                 Choose category...
               </option>
-              <option value="work">Work</option>
-              <option value="friends">Friends</option>
-              <option value="family">Family</option>
+              <option value="Work">Work</option>
+              <option value="Friends">Friends</option>
+              <option value="Family">Family</option>
             </select>
             <input type="submit" hidden />
           </StyledForm>
