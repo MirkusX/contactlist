@@ -1,3 +1,4 @@
+//initial state for reducer
 export const initialState = [
   {
     name: "",
@@ -15,6 +16,8 @@ export const initialState = [
     category: "",
   },
 ];
+
+//reducer for storing user input in form
 
 export const reducer = (state, action) => {
   switch (action.type) {

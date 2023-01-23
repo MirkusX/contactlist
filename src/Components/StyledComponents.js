@@ -5,6 +5,8 @@ import {
   BsMailbox,
 } from "react-icons/bs";
 
+//styling
+
 export const PersonIcon = styled(BsFillPersonFill)`
   vertical-align: middle;
 `;

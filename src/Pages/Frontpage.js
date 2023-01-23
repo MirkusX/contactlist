@@ -13,16 +13,27 @@ import {
   StyledSection,
 } from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
+
 export const Frontpage = () => {
+  //gets items in localstorage
   const storedList = JSON.parse(localStorage.getItem("c0nt4ct5")) || [];
+  //usestate to display and hide form
   const [show, setShow] = useState(false);
+  //usestate for items
   const [info, setInfo] = useState(storedList);
+  //usestate for separating items into different categories
   const [category, setCategory] = useState([]);
+  //import reducer state and dispatch
   const [state, dispatch] = useReducer(reducer, initialState);
+  //targets the form
   const form = useRef();
+
+  //function for hiding and displaying "create contact" form
   const showCreate = () => {
     setShow(!show);
   };
+
+  //function that stores user input in info state and resets form on submit
   const submitInfo = (e) => {
     e.preventDefault();
     setInfo([
@@ -37,6 +48,8 @@ export const Frontpage = () => {
     ]);
     form.current.reset();
   };
+
+  //function for filtering items in categories
   const filter = (props) => {
     if (props === "all") {
       setCategory(info);
@@ -45,6 +58,7 @@ export const Frontpage = () => {
     }
   };
 
+  //function for removing items from info and category state
   const remove = (index) => {
     const removeList = [...category];
     removeList.splice(index, 1);
@@ -52,6 +66,7 @@ export const Frontpage = () => {
     setInfo(removeList);
   };
 
+  //sets category the same as info so they display in "all" category when added, also sets items in local storage
   useEffect(() => {
     setCategory(info);
     localStorage.setItem("c0nt4ct5", JSON.stringify(info));
@@ -61,6 +76,7 @@ export const Frontpage = () => {
     <>
       <StyledSection>
         <StyledDiv category>
+          {/* buttons for switching categories */}
           <StyledButton onClick={() => filter("all")} value="all">
             All
           </StyledButton>
@@ -75,6 +91,7 @@ export const Frontpage = () => {
           </StyledButton>
         </StyledDiv>
         <ContactContainer>
+          {/* map for displaying items in category state */}
           {category.map((item, index) => {
             return (
               <StyledDiv key={index}>
@@ -105,6 +122,7 @@ export const Frontpage = () => {
             </StyledButton>
           </div>
           <StyledForm display={show} ref={form} onSubmit={submitInfo}>
+            {/* form */}
             <label>Name</label>
             <StyledInput
               type="text"
