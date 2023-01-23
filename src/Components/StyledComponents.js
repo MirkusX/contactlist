@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: blue;
+  background-color: #ffe381;
   align-items: center;
   width: 100%;
   gap: 1em;
@@ -20,15 +20,13 @@ export const PopOutDiv = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  background: blue;
+  background: #cec288;
   border: none;
   padding: 1em;
   cursor: pointer;
-  ${(props) => {
-    if (props.remove)
-      return `
-    background: lightblue;`;
-  }}
+  &:active {
+    background-color: #1c448e;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -49,13 +47,12 @@ export const ContactContainer = styled.div`
   grid-auto-columns: 15%;
   width: 70%;
   gap: 1em;
-  background-color: lightblue;
 `;
 
 export const StyledDiv = styled.div`
   display: flex;
   gap: 1em;
-  background-color: blue;
+  background-color: #ffe381;
   ${(props) => {
     if (props.inner)
       return `

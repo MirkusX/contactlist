@@ -81,7 +81,7 @@ export const Frontpage = () => {
                   <h2>{item.name}</h2>
                   <h2>{item.number}</h2>
                   <h2>{item.email}</h2>
-                  <StyledButton remove onClick={() => remove(index)}>
+                  <StyledButton onClick={() => remove(index)}>
                     Remove
                   </StyledButton>
                 </StyledDiv>
