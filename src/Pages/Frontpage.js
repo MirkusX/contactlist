@@ -117,11 +117,11 @@ export const Frontpage = () => {
         </ContactContainer>
         <PopOutDiv>
           <div>
-            <StyledButton onClick={() => showCreate()}>
+            <StyledButton create onClick={() => showCreate()}>
               Create Contact
             </StyledButton>
           </div>
-          <StyledForm display={show} ref={form} onSubmit={submitInfo}>
+          <StyledForm ref={form} onSubmit={submitInfo} display={show}>
             {/* form */}
             <label>Name</label>
             <StyledInput
@@ -159,6 +159,7 @@ export const Frontpage = () => {
               placeholder="Image url..."
               required
             />
+            <label>Category</label>
             <select
               type="text"
               placeholder="Category"
@@ -167,7 +168,6 @@ export const Frontpage = () => {
               }
               required
             >
-              <label>Category</label>
               <option value="" disabled>
                 Choose category...
               </option>
